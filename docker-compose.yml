@@ -24,3 +24,4 @@ services:
     environment:
       - POSTGRES_USER=tenpo_challenge
       - POSTGRES_PASSWORD=tenpo_challenge
+      - POSTGRES_DB=tenpo_challenge
