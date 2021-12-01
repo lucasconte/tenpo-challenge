@@ -10,7 +10,7 @@ for Tenpo Challenge.
 - PostgreSQL
 - Maven
 
-## Run local environment
+## Local environment
 In order to get the app running locally at port 8080
 
 -  Clone this repo.
@@ -43,16 +43,25 @@ by executing in terminal:
   ```
 - Once postgre instance is running you should be able to run the application
 
+## Prod environment
+
+The app is running in an AWS ec2 instance.
+
+You can get access at:
+ 
+ http://ec2-52-87-191-13.compute-1.amazonaws.com/
+
 ## API
 
  Postman collection:
  
  https://go.postman.co/workspace/My-Workspace~d718df3c-9517-4489-8df1-ec861e169167/collection/12919683-52ad05f7-8683-46c5-a5ad-5ce631abc522
+ 
 
 #### API Guideline
 Sign up
 ```console
-curl --location --request POST 'http://localhost:8080/signUp' \
+curl --location --request POST 'http://ec2-52-87-191-13.compute-1.amazonaws.com/signUp' \
 --header 'Content-Type: application/json' \
 --data-raw '{
     "username": "user0",
@@ -62,7 +71,7 @@ curl --location --request POST 'http://localhost:8080/signUp' \
 
 Login
 ```console
- curl --location --request POST 'http://localhost:8080/login' \
+ curl --location --request POST 'http://ec2-52-87-191-13.compute-1.amazonaws.com/login' \
  --header 'Content-Type: application/x-www-form-urlencoded' \
  --data-urlencode 'username=user0' \
  --data-urlencode 'password=password0'
@@ -70,22 +79,22 @@ Login
 
 Sum operation
 ```console
-curl --location --request GET 'http://localhost:8080/api/operation/sum?number0=10&number1=20' \
+curl --location --request GET 'http://ec2-52-87-191-13.compute-1.amazonaws.com/api/operation/sum?number0=23&number1=23' \
 --header 'Content-Type: application/json' \
---header 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYmYiOjE2MzgyMjMyNTcsImV4cCI6MTYzODIyNTA1NywiaWF0IjoxNjM4MjIzMjU3LCJ1c2VybmFtZSI6InVzZXIwIn0.RPKkn2KhROmKZIwrJTQKE8DikarHQkgtfG2x4fq58KM'
+--header 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYmYiOjE2MzgzODYwODEsImV4cCI6MTYzODM4Nzg4MSwiaWF0IjoxNjM4Mzg2MDgxLCJ1c2VybmFtZSI6InVzZXIwIn0.qWwqviR6LW3r2udS41zbmapbbO3sf5jwULVIEE-7my0'
 ```
 
 History
 ```console
-curl --location --request GET 'http://localhost:8080/history?page=0&size=10&sort=createdAt,DESC' \
+curl --location --request GET 'http://ec2-52-87-191-13.compute-1.amazonaws.com/history?page=0&size=10&sort=createdAt,DESC' \
 --header 'Content-Type: application/json'
 ```
 
 Logout
 ```console
-curl --location --request POST 'http://localhost:8080/logout' \
+curl --location --request POST 'http://ec2-52-87-191-13.compute-1.amazonaws.com/logout' \
 --header 'Content-Type: application/json' \
---header 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYmYiOjE2MzgyMjMyNTcsImV4cCI6MTYzODIyNTA1NywiaWF0IjoxNjM4MjIzMjU3LCJ1c2VybmFtZSI6InVzZXIwIn0.RPKkn2KhROmKZIwrJTQKE8DikarHQkgtfG2x4fq58KM'
+--header 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYmYiOjE2MzgzODYwODEsImV4cCI6MTYzODM4Nzg4MSwiaWF0IjoxNjM4Mzg2MDgxLCJ1c2VybmFtZSI6InVzZXIwIn0.qWwqviR6LW3r2udS41zbmapbbO3sf5jwULVIEE-7my0'
 ```
 
 ## Docker Repository
